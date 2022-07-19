@@ -2,7 +2,7 @@ const intialState = {
     balance : 0
 }
 
-function reducer(state=intialState,action) {
+const reducer = (state=intialState,action) => {
 switch(action.type){
     case "DEPOSIT":
         return {balance: state.balance + action.payload}
