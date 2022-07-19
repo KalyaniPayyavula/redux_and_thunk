@@ -1,24 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
+import HomePage from './pages/homePage'
+import DepositPage from './pages/depositPage'
+import WithdrawPage from './pages/withdrawPage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+       <ul className='ul-style'>
+        <li className="list-style">
+        <NavLink
+        className="nav-style"
+        to="/"
+        end
+        >home Page</NavLink></li>
+       
+       <li className="list-style">
+        <NavLink
+        className="nav-style" 
+        to="/deposit"
+        end
+        >Deposit Page</NavLink></li>
+      
+      <li className="list-style">
+        <NavLink 
+        className="nav-style"
+        to="/withdraw"
+        end
+        >Withdraw Page</NavLink></li>
+        </ul> 
+  
+     
+    <Routes>
+      <Route 
+      path="/" 
+      end
+      element={<HomePage/>}/>
+    
+      <Route 
+      path="/deposit" 
+      end
+      element = {<DepositPage/>}/>
+
+    <Route 
+      path="/withdraw" 
+      end
+      element = {<WithdrawPage/>}
+      />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
