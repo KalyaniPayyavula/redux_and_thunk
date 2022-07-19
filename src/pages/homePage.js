@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const HomePage = () =>{
+    const balance = useSelector(state => state.balance)
     return(
-        <div>Home page...</div>
+        <div>Home page...{balance}</div>
     )
 }
 
