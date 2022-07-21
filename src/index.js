@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import reducer from './store/reducer'
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import balanceReducer from './store/balanceReducer';
+import loanReducer from './store/loanReducer';
+import thunk from 'redux-thunk'
 
-const store = createStore(reducer)
+const store = createStore(combineReducers(
+  {balanceReducer,
+    loanReducer
+}),applyMiddleware(thunk))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,16 +1,23 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import * as balanceActions from '../actions/balanceAction'
 
 const DepositPage = () =>{
-    const balance = useSelector(state => state.balance)
+    const balance = useSelector(state => state.balanceReducer.balance)
+    const loading = useSelector(state => state.balanceReducer.loading)
     const dispatch = useDispatch()
+    const loan = useSelector(state => state.loanReducer.loan)
    const depositHandle = () =>{
-     dispatch({type : "DEPOSIT", payload : 10})
+     dispatch(balanceActions.depositAsync())
    }
     return(
         <div>
-            <div>Balance : {balance}</div>
+            {
+                loading ? <h1>Loading...</h1> : <div>Balance : {balance}</div>
+            }
+        
         <div>Deposit page...</div>
+        <h1>{loan ? "loan applied" : "loan needed"}</h1>
         <button onClick={depositHandle}>Deposit</button>
         </div>
     )
